@@ -25,6 +25,7 @@ unitTests:
   stage: test
   only:
     - release
+    - master
   script:
     - ./gradlew test
 
