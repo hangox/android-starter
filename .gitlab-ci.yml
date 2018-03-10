@@ -4,6 +4,12 @@ before_script:
   - sdkmanager "build-tools;26.0.3" "platforms;android-26" "tools"
   - chmod +x ./gradlew
 
+cache:
+  paths:
+  - ~/
+  - /opt/android-sdk/
+
+
 stages:
   - build
   - test
