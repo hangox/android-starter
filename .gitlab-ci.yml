@@ -1,13 +1,22 @@
 image: thyrlian/android-sdk:latest
 
+variables:
+  ANDROID_SDK: "cache/adk"
+  GRADLEW : "./gradlew --gradle-user-home cache/gradle"
+
 before_script:
-  - sdkmanager "build-tools;26.0.3" "platforms;android-26" "tools"
+  - echo "sdk.dir=${ANDROID_SDK}" > local.properties
+  - wget https://raw.githubusercontent.com/thyrlian/AndroidSDK/master/android-sdk/license_accepter.sh
+  - chmod 755 license_accepter.sh
+  - ./license_accepter.sh $ANDROID_SDK
   - chmod +x ./gradlew
 
+
+
 cache:
+  key: dataBindingLibary
   paths:
-  - ~/
-  - /opt/android-sdk/
+  - cache
 
 
 stages:
@@ -20,10 +29,20 @@ deploy:
   only:
     - tags
   script:
-    - ./gradlew :databinding-base:bintrayUpload
+    - $GRADLEW :databinding-base:bintrayUpload
   artifacts:
     paths:
-    - app/build/outputs/apk
+      - databinding-base/build/outputs/
+
+assemble:
+  stage: build
+  only:
+      - master
+  script:
+      - $GRADLEW build
+  artifacts:
+    paths:
+      - databinding-base/build/outputs/
 
 
 
@@ -31,7 +50,6 @@ unitTests:
   stage: test
   only:
     - release
-    - master
   script:
-    - ./gradlew test
+    - $GRADLEW test
 
