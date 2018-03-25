@@ -54,7 +54,7 @@ ext {
     eArtifactId = 'databinding-base'
     eName = "databinding-base"
     eDescription = ''
-    eVersion = '1.0.1'
+    eVersion = '1.0.2'
     eVcsUrl = 'https://gitlab.com/hango/databinding-library.git'
     eVcsTag = 'v1.0'
     eWebsiteUrl = 'https://gitlab.com/hango/databinding-library'
