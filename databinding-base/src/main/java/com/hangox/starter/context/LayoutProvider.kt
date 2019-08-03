@@ -1,6 +1,7 @@
-package com.hangox.databinding.context;
+package com.hangox.starter.context
 
-import android.support.annotation.LayoutRes;
+
+import androidx.annotation.LayoutRes
 
 /**
  * Created With Android Studio
@@ -11,8 +12,9 @@ import android.support.annotation.LayoutRes;
  * 可以提供Layout
  */
 
-public interface LayoutProvider {
+interface LayoutProvider {
 
 
-    @LayoutRes  int provideLayoutId();
+    @LayoutRes
+    fun provideLayoutId(): Int
 }
