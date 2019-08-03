@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 
 /**
  * Created With Android Studio
@@ -14,7 +15,8 @@ import androidx.databinding.ViewDataBinding
  * Time 11:07 AM
  * 带Binding功能的Fragment
  */
-abstract class BindingFragment<V : ViewDataBinding> : HBaseFragment(), BindingProvider<V> {
+abstract class BindingFragment<V : ViewDataBinding> : Fragment(), LayoutProvider, ComponentProvider,
+    BindingProvider<V> {
     override lateinit var binding: V
 
     override fun onCreateView(

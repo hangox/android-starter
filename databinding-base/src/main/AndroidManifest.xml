@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.hangox.databinding_base"/>
+<manifest package="com.hangox.starter" />
