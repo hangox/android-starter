@@ -62,4 +62,4 @@ ext {
     eWebsiteUrl = 'https://gitlab.com/hango/databinding-library'
 }
 
-apply from : "https://raw.githubusercontent.com/hangox/bintray-push/master/upload.gradle"
+//apply from : "https://raw.githubusercontent.com/hangox/bintray-push/master/upload.gradle"

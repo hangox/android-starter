@@ -17,7 +17,14 @@ import androidx.fragment.app.Fragment
  */
 abstract class BindingFragment<V : ViewDataBinding> : Fragment(), LayoutProvider, ComponentProvider,
     BindingProvider<V> {
-    override lateinit var binding: V
+
+    private lateinit var _binding: V
+
+    override var binding: V
+        get() = _binding //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {
+            _binding = value
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -21,7 +21,13 @@ abstract class BindingActivity<V : ViewDataBinding> :
     BindingProvider<V>,
     LayoutProvider,
     ComponentProvider {
-    override lateinit var binding: V
+    private lateinit var _binding: V;
+
+    override var binding: V
+        get() = _binding //To change initializer of created properties use File | Settings | File Templates.
+        set(value) {
+            _binding = value
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
