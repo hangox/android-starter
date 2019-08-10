@@ -1,4 +1,4 @@
-package com.hangox.app.manager.arch.lifecycle
+package com.hangox.starter.arch
 
 import androidx.lifecycle.Observer
 
