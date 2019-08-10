@@ -20,5 +20,5 @@ abstract class NotNullObserver<T> : Observer<T> {
 
     abstract fun onNotNullChanged(t: T)
 
-    abstract fun onNullChanged()
+    fun onNullChanged() {}
 }
