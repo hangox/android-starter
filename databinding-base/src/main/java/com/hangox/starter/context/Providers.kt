@@ -9,16 +9,21 @@ import androidx.databinding.ViewDataBinding
  */
 interface BindingProvider<V : ViewDataBinding> {
 
+    /**
+     * 提供 binding
+     */
     var binding: V
 }
 
 /**
  * 可以提供Layout
  */
-
 interface LayoutProvider {
 
 
+    /**
+     * 提供 layoutId
+     */
     @LayoutRes
     fun provideLayoutId(): Int
 }
@@ -31,5 +36,8 @@ interface LayoutProvider {
 
 interface ComponentProvider {
 
+    /**
+     * 提供 DatabindingComponent
+     */
     fun provideComponent(): androidx.databinding.DataBindingComponent?
 }
