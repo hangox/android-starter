@@ -2,7 +2,7 @@ image: thyrlian/android-sdk:latest
 
 variables:
   ANDROID_SDK: "cache/adk"
-  GRADLEW : "./gradlew --gradle-user-home cache/gradle"
+  GRADLEW: "./gradlew --gradle-user-home cache/gradle"
 
 before_script:
   - echo "sdk.dir=${ANDROID_SDK}" > local.properties
@@ -14,9 +14,9 @@ before_script:
 
 
 cache:
-  key: dataBindingLibary
+  key: ${CI_PROJECT_ID}
   paths:
-  - cache
+    - cache
 
 
 stages:
@@ -37,19 +37,12 @@ deploy:
 assemble:
   stage: build
   only:
-      - master
+    - master
   script:
-      - $GRADLEW build
+    - $GRADLEW :app:assembleDebug
   artifacts:
     paths:
       - databinding-base/build/outputs/
 
 
-
-unitTests:
-  stage: test
-  only:
-    - release
-  script:
-    - $GRADLEW test
 
