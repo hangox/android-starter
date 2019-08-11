@@ -14,13 +14,9 @@ import androidx.databinding.ViewDataBinding
  * Time 上午12:22
  * 集成ViewDataBinding VieHolder
  */
-class BindingViewHolder<V : ViewDataBinding>(binding: ViewDataBinding) :
+open class BindingViewHolder<V : ViewDataBinding>(binding: ViewDataBinding) :
     HBViewHolder(binding.root) {
-    val binding: V
-
-    init {
-        this.binding = binding as V
-    }
+    val binding: V = binding as V
 
     constructor(@LayoutRes layoutId: Int, parent: ViewGroup) : this(layoutId, parent, null) {}
 
@@ -36,6 +32,14 @@ class BindingViewHolder<V : ViewDataBinding>(binding: ViewDataBinding) :
             component
         )
     ) {
+    }
+
+
+    /**
+     * 执行绑定
+     */
+    fun executePendingBindings() {
+        binding.executePendingBindings()
     }
 
 }
