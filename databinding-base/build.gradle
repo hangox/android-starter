@@ -3,17 +3,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 26
-
+    compileSdkVersion 28
 
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -29,7 +28,7 @@ android {
         }
     }
 
-    dataBinding{
+    dataBinding {
         enabled true
     }
 
@@ -44,8 +43,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
@@ -53,13 +52,17 @@ dependencies {
 
 ext {
     eGroup = 'com.hangox'
-    eArtifactId = 'databinding-base'
-    eName = "databinding-base"
+    eArtifactId = 'android-starter'
+    eName = "android-start"
     eDescription = ''
-    eVersion = '1.0.2'
+    eVersion = System.getenv("CI_COMMIT_TAG") // 使用 commit 中的 tag
     eVcsUrl = 'https://gitlab.com/hango/databinding-library.git'
     eVcsTag = 'v1.0'
     eWebsiteUrl = 'https://gitlab.com/hango/databinding-library'
 }
+// 如果是 CI 环境才会加入这个脚本，防止网络不好的时候失败
+// 当然你把这个脚本改为本地的也可以
+if (System.getenv("CI")) {
+    apply from: "https://raw.githubusercontent.com/hangox/bintray-push/master/upload.gradle"
+}
 
-//apply from : "https://raw.githubusercontent.com/hangox/bintray-push/master/upload.gradle"
