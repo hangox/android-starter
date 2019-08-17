@@ -12,18 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class HBViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
     View.OnClickListener {
-    protected var mOnViewHolderClickListener: OnViewHolderClickListener? = null
+    protected var onViewHolderClickListener: OnViewHolderClickListener? = null
+        set(value) {
+            itemView.setOnClickListener(if (value == null) null else this)
+            field = value
+        }
 
 
     override fun onClick(v: View) {
-        if (mOnViewHolderClickListener != null) {
-            mOnViewHolderClickListener!!.onRootViewClick(itemView, adapterPosition)
+        if (onViewHolderClickListener != null) {
+            onViewHolderClickListener!!.onRootViewClick(itemView, adapterPosition)
         }
-    }
-
-    fun setOnViewHolderClickListener(onViewHolderClickListener: OnViewHolderClickListener?) {
-        itemView.setOnClickListener(if (onViewHolderClickListener == null) null else this)
-        mOnViewHolderClickListener = onViewHolderClickListener
     }
 
     interface OnViewHolderClickListener {
