@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class HBViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
     View.OnClickListener {
-    protected var onViewHolderClickListener: OnViewHolderClickListener? = null
+    var onViewHolderClickListener: OnViewHolderClickListener? = null
         set(value) {
             itemView.setOnClickListener(if (value == null) null else this)
             field = value
