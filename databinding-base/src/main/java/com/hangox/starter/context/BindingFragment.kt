@@ -21,7 +21,7 @@ abstract class BindingFragment<V : ViewDataBinding> : Fragment(), LayoutProvider
     private lateinit var _binding: V
 
     override var binding: V
-        get() = _binding //To change initializer of created properties use File | Settings | File Templates.
+        get() = _binding
         set(value) {
             _binding = value
         }

@@ -7,7 +7,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.hangox.starter.toast.ToastCakeWorker
 
 /**
  * Created With Android Studio
@@ -21,7 +20,7 @@ abstract class BindingActivity<V : ViewDataBinding> :
     BindingProvider<V>,
     LayoutProvider,
     ComponentProvider {
-    private lateinit var _binding: V;
+    private lateinit var _binding: V
 
     override var binding: V
         get() = _binding //To change initializer of created properties use File | Settings | File Templates.
@@ -31,14 +30,12 @@ abstract class BindingActivity<V : ViewDataBinding> :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        toastCakeWorker = ToastCakeWorker(this)
         configActionBar()
         if (provideLayoutId() != View.NO_ID) {
             binding = DataBindingUtil.setContentView(this, provideLayoutId(), provideComponent())
         }
     }
 
-    private lateinit var toastCakeWorker: ToastCakeWorker
 
 
     val activity: BindingActivity<V>
