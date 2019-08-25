@@ -12,7 +12,7 @@ import android.widget.Toast
  * Time 上午10:36
  * Toast 的单独实现
  */
-class ToastCake(private val mContext: Context) {
+class ToastMaker(private val mContext: Context) {
     private val toast: Toast = Toast.makeText(mContext, "", Toast.LENGTH_LONG)
 
 
@@ -44,18 +44,18 @@ class ToastCake(private val mContext: Context) {
     companion object {
 
         @SuppressLint("StaticFieldLeak")
-        private var toastCake: ToastCake? = null
+        private var toastMaker: ToastMaker? = null
 
         /**
          * 获取公共的Toast
          * @param context 任意context
          * @return 返回一个公共的实现
          */
-        fun getPublic(context: Context): ToastCake {
-            if (toastCake == null) {
-                toastCake = ToastCake(context.applicationContext)
+        fun getPublic(context: Context): ToastMaker {
+            if (toastMaker == null) {
+                toastMaker = ToastMaker(context.applicationContext)
             }
-            return toastCake!!
+            return toastMaker!!
         }
     }
 }
