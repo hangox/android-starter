@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
@@ -37,6 +38,9 @@ abstract class BindingActivity<V : ViewDataBinding> :
     }
 
 
+    override fun provideComponent(): DataBindingComponent? {
+        return null
+    }
 
     val activity: BindingActivity<V>
         get() = this

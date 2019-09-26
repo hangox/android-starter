@@ -1,4 +1,4 @@
-package com.hangox.starter.arch
+package com.hangox.starter.arch.livedata
 
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
