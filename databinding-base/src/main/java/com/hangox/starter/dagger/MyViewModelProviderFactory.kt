@@ -3,9 +3,9 @@ package com.hangox.starter.dagger
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.hangox.starter.dagger.scope.AppScope
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 
 /**
  * Created by hangox on 2018/2/5.
@@ -13,7 +13,7 @@ import javax.inject.Singleton
  * 因为默认的Factory 只能找到空的构造器，或者带Application 的构造器
  * 使用Dagger的话，必须自己自定义一个Factory
  */
-@Singleton
+@AppScope
 class MyViewModelProviderFactory @Inject
 constructor(private val creators: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>) :
     ViewModelProvider.Factory {

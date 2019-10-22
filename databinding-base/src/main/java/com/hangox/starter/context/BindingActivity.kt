@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.hangox.starter.arch.view.HostEventDispatcher
+import com.hangox.starter.arch.view.ViControllerHost
+import javax.inject.Inject
 
 /**
  * Created With Android Studio
@@ -20,8 +23,15 @@ abstract class BindingActivity<V : ViewDataBinding> :
     AppCompatActivity(),
     BindingProvider<V>,
     LayoutProvider,
+    ViControllerHost,
     ComponentProvider {
     private lateinit var _binding: V
+
+    @Inject
+    lateinit var eventDispatcher: HostEventDispatcher
+
+
+    override fun getHostEventDispatcher(): HostEventDispatcher = eventDispatcher
 
     override var binding: V
         get() = _binding //To change initializer of created properties use File | Settings | File Templates.
@@ -34,6 +44,7 @@ abstract class BindingActivity<V : ViewDataBinding> :
         configActionBar()
         if (provideLayoutId() != View.NO_ID) {
             binding = DataBindingUtil.setContentView(this, provideLayoutId(), provideComponent())
+            eventDispatcher.dispatchViewCreated()
         }
     }
 

@@ -8,6 +8,9 @@ import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.hangox.starter.arch.view.HostEventDispatcher
+import com.hangox.starter.arch.view.ViControllerHost
+import javax.inject.Inject
 
 /**
  * Created With Android Studio
@@ -16,10 +19,21 @@ import androidx.fragment.app.Fragment
  * Time 11:07 AM
  * 带Binding功能的Fragment
  */
-abstract class BindingFragment<V : ViewDataBinding> : Fragment(), LayoutProvider, ComponentProvider,
+abstract class BindingFragment<V : ViewDataBinding> : Fragment(),
+    LayoutProvider,
+    ComponentProvider,
+    ViControllerHost,
     BindingProvider<V> {
 
     private lateinit var _binding: V
+
+    @Inject
+    lateinit var eventDispatcher: HostEventDispatcher
+
+
+    override fun getHostEventDispatcher(): HostEventDispatcher = eventDispatcher
+
+
 
     override var binding: V
         get() = _binding
@@ -40,6 +54,11 @@ abstract class BindingFragment<V : ViewDataBinding> : Fragment(), LayoutProvider
             provideComponent()
         )
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        eventDispatcher.dispatchViewCreated()
     }
 
     override fun provideComponent(): DataBindingComponent? = null

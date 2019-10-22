@@ -7,5 +7,6 @@ import androidx.lifecycle.LifecycleOwner
  */
 interface ViControllerHost : LifecycleOwner {
 
-    var viewCreatedEventDispatcher: ViewCreatedEventDispatcher
+    fun getHostEventDispatcher(): HostEventDispatcher
+
 }

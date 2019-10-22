@@ -14,7 +14,7 @@ open class ViController<T : ViControllerHost>(
 ) : LifecycleObserver {
 
     init {
-        host.viewCreatedEventDispatcher.addOnViewReadyListener {
+        host.getHostEventDispatcher().addOnViewReadyListener {
             host.lifecycle.addObserver(this)
         }
     }

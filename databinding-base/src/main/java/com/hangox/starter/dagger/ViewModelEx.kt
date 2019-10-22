@@ -4,14 +4,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-
+import com.hangox.starter.dagger.scope.AppScope
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * 用这个获取就不需要拿到ViewModelFactory
  */
-@Singleton
+@AppScope
 class MyViewModelProviders
 @Inject
 constructor(

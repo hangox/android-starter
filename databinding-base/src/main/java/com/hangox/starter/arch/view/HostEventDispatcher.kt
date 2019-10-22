@@ -6,14 +6,11 @@ import javax.inject.Inject
  *
  */
 
-class ViewCreatedEventDispatcher
+class HostEventDispatcher
 @Inject
 constructor() {
     private val callbacks = ArrayList<() -> Unit>(2)
 
-    init {
-
-    }
 
     fun dispatchViewCreated() {
         callbacks.forEach {
