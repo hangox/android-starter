@@ -41,7 +41,7 @@ android {
 
 dependencies {
     def archVersion = "1.1.0"
-    def daggerVersion = "2.23.2"
+    def daggerVersion = "2.25.4"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
@@ -49,7 +49,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.google.dagger:dagger:2.24"
     implementation 'android.arch.lifecycle:extensions:' + archVersion
     implementation 'android.arch.lifecycle:viewmodel:' + archVersion
     implementation 'android.arch.lifecycle:livedata:' + archVersion

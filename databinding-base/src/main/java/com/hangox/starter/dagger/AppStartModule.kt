@@ -1,6 +1,7 @@
 package com.hangox.starter.dagger
 
 import dagger.Module
+import dagger.android.AndroidInjectionModule
 import dagger.android.support.AndroidSupportInjectionModule
 
 /**
@@ -9,7 +10,8 @@ import dagger.android.support.AndroidSupportInjectionModule
 @Module(
     includes = [
         AndroidSupportInjectionModule::class,
-        MyViewModelModules::class
+        MyViewModelModules::class,
+        AndroidInjectionModule::class
     ]
 )
 class AppStartModule {
