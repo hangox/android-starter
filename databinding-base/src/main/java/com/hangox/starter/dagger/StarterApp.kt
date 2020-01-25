@@ -5,6 +5,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import dagger.android.support.DaggerApplication
+import javax.inject.Inject
 
 /**
  *
@@ -13,7 +14,7 @@ import dagger.android.support.DaggerApplication
 abstract class StarterApp : Application(), HasAndroidInjector {
 
     @Volatile
-    @JvmField
+    @set:Inject
     var androidInjector: DispatchingAndroidInjector<Any?>? = null
 
 
