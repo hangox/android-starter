@@ -14,8 +14,11 @@ import javax.inject.Inject
 abstract class StarterApp : Application(), HasAndroidInjector {
 
     @Volatile
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any?>
+    var androidInjector: DispatchingAndroidInjector<Any?>? = null
+        @Inject
+        set(value) {
+            field = value
+        }
 
 
     override fun onCreate() {
