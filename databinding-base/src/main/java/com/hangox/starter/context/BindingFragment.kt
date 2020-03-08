@@ -1,5 +1,6 @@
 package com.hangox.starter.context
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.hangox.starter.arch.view.HostEventDispatcher
 import com.hangox.starter.arch.view.ViControllerHost
+import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 /**
@@ -34,6 +36,10 @@ abstract class BindingFragment<V : ViewDataBinding> : Fragment(),
     override fun getHostEventDispatcher(): HostEventDispatcher = eventDispatcher
 
 
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
     override var binding: V
         get() = _binding
