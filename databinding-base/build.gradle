@@ -41,7 +41,6 @@ android {
 
 dependencies {
     def archVersion = "1.1.0"
-    def daggerVersion = "2.28.1"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
