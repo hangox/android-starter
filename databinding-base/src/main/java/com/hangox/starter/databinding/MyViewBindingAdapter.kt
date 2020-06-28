@@ -12,13 +12,13 @@ import androidx.databinding.BindingAdapter
 object MyViewBindingAdapter {
 
     @JvmStatic
-    @BindingAdapter("app:isGone")
+    @BindingAdapter("isGone")
     fun viewGone(view: View, isGone: Boolean) {
         view.visibility = if (isGone) View.GONE else View.VISIBLE
     }
 
     @JvmStatic
-    @BindingAdapter("app:isVisible")
+    @BindingAdapter("isVisible")
     fun viewVisible(view: View, isVisible: Boolean) {
         view.visibility = if (isVisible) View.VISIBLE else View.GONE
     }

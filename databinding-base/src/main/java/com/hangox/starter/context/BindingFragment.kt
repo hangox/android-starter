@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -23,7 +22,6 @@ import javax.inject.Inject
  */
 abstract class BindingFragment<V : ViewDataBinding> : Fragment(),
     LayoutProvider,
-    ComponentProvider,
     ViControllerHost,
     BindingProvider<V> {
 
@@ -57,7 +55,7 @@ abstract class BindingFragment<V : ViewDataBinding> : Fragment(),
             provideLayoutId(),
             container,
             false,
-            provideComponent()
+            null
         )
         return binding.root
     }
@@ -67,6 +65,5 @@ abstract class BindingFragment<V : ViewDataBinding> : Fragment(),
         eventDispatcher.dispatchViewCreated()
     }
 
-    override fun provideComponent(): DataBindingComponent? = null
 
 }

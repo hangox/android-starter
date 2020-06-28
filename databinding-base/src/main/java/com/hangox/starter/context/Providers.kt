@@ -34,10 +34,11 @@ interface LayoutProvider {
  * 提供dataBinding的Component
  */
 
-interface ComponentProvider {
-
-    /**
-     * 提供 DatabindingComponent
-     */
-    fun provideComponent(): androidx.databinding.DataBindingComponent?
-}
+//interface ComponentProvider {
+//
+//    /**
+//     * 提供 DatabindingComponent
+//     */
+//    val dataBindingComponent: DataBindingComponent?
+//    get() = null
+//}

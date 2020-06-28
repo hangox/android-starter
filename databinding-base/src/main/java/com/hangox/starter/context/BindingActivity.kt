@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.hangox.starter.arch.view.HostEventDispatcher
@@ -24,8 +23,7 @@ abstract class BindingActivity<V : ViewDataBinding> :
     AppCompatActivity(),
     BindingProvider<V>,
     LayoutProvider,
-    ViControllerHost,
-    ComponentProvider {
+    ViControllerHost {
     private lateinit var _binding: V
 
     @Inject
@@ -45,15 +43,11 @@ abstract class BindingActivity<V : ViewDataBinding> :
         super.onCreate(savedInstanceState)
         configActionBar()
         if (provideLayoutId() != View.NO_ID) {
-            binding = DataBindingUtil.setContentView(this, provideLayoutId(), provideComponent())
+            binding = DataBindingUtil.setContentView(this, provideLayoutId(), null)
             eventDispatcher.dispatchViewCreated()
         }
     }
 
-
-    override fun provideComponent(): DataBindingComponent? {
-        return null
-    }
 
     val activity: BindingActivity<V>
         get() = this

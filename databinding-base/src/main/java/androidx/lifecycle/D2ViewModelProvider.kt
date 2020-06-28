@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
-private const val KEY: String = "com.netease.cc.mobile.ViewModelProvider.DefaultKey"
+private const val KEY: String = "com.hangox.mobile.ViewModelProvider.DefaultKey"
 
 /**
  * 直接注入 ViewModel 用的提供器
@@ -15,10 +15,10 @@ private const val KEY: String = "com.netease.cc.mobile.ViewModelProvider.Default
  */
 @Reusable
 class D2ViewModelProvider<T : ViewModelStoreOwner, V : ViewModel> @Inject constructor(
-    storeOwner: ViewModelStoreOwner,
-    private val store: ViewModelStore = storeOwner.viewModelStore,
+    storeOwner: T,
     private val vModelProvider: Provider<V>
 ) {
+    private val store: ViewModelStore = storeOwner.viewModelStore
 
     val i: V
 
