@@ -57,11 +57,11 @@ abstract class BindingActivity<V : ViewDataBinding> :
      * 是否显示返回按键
      * @return
      */
-    protected val isShowNavigationUp: Boolean
+    protected open val isShowNavigationUp: Boolean
         get() = true
 
 
-    protected fun configActionBar() {
+    protected open fun configActionBar() {
         val actionBar = supportActionBar
         if (actionBar != null && isShowNavigationUp) {
             actionBar.setDisplayHomeAsUpEnabled(true)
@@ -81,7 +81,7 @@ abstract class BindingActivity<V : ViewDataBinding> :
     /**
      * 点击左上角的按钮时候触发
      */
-    protected fun onHomeButtonClick() {
+    protected open fun onHomeButtonClick() {
         finish()
     }
 }
