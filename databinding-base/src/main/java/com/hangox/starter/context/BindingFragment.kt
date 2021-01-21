@@ -22,7 +22,7 @@ import javax.inject.Inject
  */
 abstract class BindingFragment<V : ViewDataBinding> : Fragment(),
     LayoutProvider,
-    ViControllerHost,
+    ViControllerHost<V>,
     BindingProvider<V> {
 
     private lateinit var _binding: V

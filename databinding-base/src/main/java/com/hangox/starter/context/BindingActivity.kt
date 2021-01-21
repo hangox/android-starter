@@ -23,7 +23,7 @@ abstract class BindingActivity<V : ViewDataBinding> :
     AppCompatActivity(),
     BindingProvider<V>,
     LayoutProvider,
-    ViControllerHost {
+    ViControllerHost<V> {
     private lateinit var _binding: V
 
     @Inject
