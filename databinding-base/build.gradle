@@ -1,9 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
 
     defaultConfig {
@@ -11,7 +12,6 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
@@ -51,9 +51,17 @@ dependencies {
     api 'android.arch.lifecycle:extensions:' + archVersion
     api 'android.arch.lifecycle:viewmodel:' + archVersion
     api 'android.arch.lifecycle:livedata:' + archVersion
-    api "com.google.dagger:dagger:$daggerVersion"
-    api 'com.google.dagger:dagger-android:' + daggerVersion
-    api 'com.google.dagger:dagger-android-support:' + daggerVersion
+
+    implementation 'com.google.dagger:hilt-android:2.37'
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.37'
+
+    // For instrumentation tests
+    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.37'
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-compiler:2.37'
+
+    // For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.37'
+    testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.37'
 
 }
 
