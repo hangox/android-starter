@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.hangox.starter.arch.view.HostEventDispatcher
 import com.hangox.starter.arch.view.ViControllerHost
-import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 /**
@@ -39,7 +38,6 @@ abstract class BindingActivity<V : ViewDataBinding> :
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         configActionBar()
         if (provideLayoutId() != View.NO_ID) {

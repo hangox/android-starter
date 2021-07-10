@@ -20,6 +20,7 @@ class D2ViewModelProvider<T : ViewModelStoreOwner, V : ViewModel> @Inject constr
 ) {
     private val store: ViewModelStore = storeOwner.viewModelStore
 
+
     val i: V
 
 
