@@ -5,6 +5,7 @@ buildscript {
     ext.daggerVersion = '2.37'
     repositories {
         google()
+        //noinspection JcenterRepositoryObsolete
         jcenter()
 
     }
@@ -21,7 +22,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-
+        maven { url "https://jitpack.io" }
     }
 }
 
