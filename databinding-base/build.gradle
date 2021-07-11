@@ -79,7 +79,7 @@ afterEvaluate {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.gitlab.hango'
+                groupId = 'com.github.hangox'
                 artifactId = 'android-starter'
                 version = '1.1.0'
             }
